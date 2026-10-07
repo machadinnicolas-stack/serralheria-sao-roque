@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marcenaria-gilt.vercel.app/sitemap.xml
+Sitemap: https://serralheria-sao-roque.vercel.app/sitemap.xml

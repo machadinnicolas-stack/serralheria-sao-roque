@@ -4,3 +4,6 @@ dist/
 *.log
 qa/
 .npm-cache/
+
+.vercel
+.env*
