@@ -17,10 +17,31 @@
   max-width: 720px
 }
 
+.sec-top {
+  display: grid;
+  grid-template-columns: minmax(0,1.08fr) minmax(0,1fr);
+  gap: clamp(32px,5vw,80px);
+  align-items: center;
+  margin-bottom: 64px
+}
+
+.sec-brand {
+  margin: 0;
+  width: 100%;
+  border: 1px solid #ffffff14;
+  background: #212324
+}
+
+.sec-brand img {
+  display: block;
+  width: 100%;
+  height: auto
+}
+
 .sec-intro h2 {
-  font-size: clamp(37px, 4.15vw, 64px);
+  font-size: clamp(34px, 3.5vw, 54px);
   line-height: 1.07;
-  letter-spacing: -2.8px;
+  letter-spacing: -2px;
   margin-top: 26px
 }
 
@@ -31,21 +52,6 @@
   font-size: 15px;
   line-height: 1.9;
   color: #c6c5c3
-}
-
-.sec-quote {
-  margin: 64px 0 60px;
-  padding-left: 28px;
-  border-left: 2px solid var(--accent);
-  max-width: 760px
-}
-
-.sec-quote p {
-  font-size: clamp(20px, 2.2vw, 28px);
-  line-height: 1.45;
-  letter-spacing: -0.5px;
-  font-style: italic;
-  color: #f4f4f3
 }
 
 .sec-grid {
@@ -81,6 +87,12 @@
 }
 
 @media (max-width: 1000px) {
+  .sec-top {
+    grid-template-columns: minmax(0,1fr)
+  }
+  .sec-brand {
+    max-width: 620px
+  }
   .sec-grid {
     grid-template-columns: repeat(2, 1fr)
   }
@@ -90,7 +102,7 @@
   .sec-grid {
     grid-template-columns: 1fr
   }
-  .sec-quote {
-    margin: 48px 0 44px
+  .sec-top {
+    margin-bottom: 44px
   }
 }

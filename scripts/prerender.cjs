@@ -17,19 +17,22 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const PREVIEW_URL = process.env.PRERENDER_URL || 'http://127.0.0.1:4173';
-// Absolute, not __dirname-relative: when run through a tool that copies this
-// script's text into a temp file elsewhere before executing it, __dirname no
-// longer points at this project (confirmed with Claude Code's playwright skill).
-const indexPath = process.env.PRERENDER_INDEX_PATH || path.join('C:', 'Users', 'User', 'Desktop', 'Serralheria Cliente Arthur', 'index.html');
+const indexPath = process.env.PRERENDER_INDEX_PATH || path.resolve(__dirname, '../index.html');
 
 (async () => {
-  const browser = await chromium.launch();
-  const page = await browser.newPage();
+  const browser = await chromium.launch(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {});
+  const page = await browser.newPage({ reducedMotion: 'reduce' });
   await page.goto(PREVIEW_URL, { waitUntil: 'networkidle' });
   await page.waitForTimeout(1000);
-  const rootHtml = await page.locator('#root').innerHTML();
+  const rootHtml = await page.locator('#root').evaluate((root) => {
+    const snapshot = root.cloneNode(true);
+    snapshot.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
+    snapshot.querySelectorAll('.plate-on, .cutting, .hero-offscreen').forEach((element) => element.classList.remove('plate-on', 'cutting', 'hero-offscreen'));
+    return snapshot.innerHTML;
+  });
   await browser.close();
 
   const source = fs.readFileSync(indexPath, 'utf8');
@@ -46,5 +49,20 @@ const indexPath = process.env.PRERENDER_INDEX_PATH || path.join('C:', 'Users', '
 
   const updated = `${source.slice(0, rootStart)}${ROOT_OPEN}${rootHtml}</div>\n    ${source.slice(scriptStart)}`;
   fs.writeFileSync(indexPath, updated);
+  // Keep the structured data allowed by the deployed Content Security Policy.
+  const jsonLd = updated.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  const configPath = path.join(path.dirname(indexPath), 'vercel.json');
+  if (jsonLd && fs.existsSync(configPath)) {
+    const hash = crypto.createHash('sha256').update(jsonLd[1]).digest('base64');
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    for (const rule of config.headers ?? []) {
+      for (const header of rule.headers ?? []) {
+        if (header.key.toLowerCase() === 'content-security-policy') {
+          header.value = header.value.replace(/script-src [^;]+/, `script-src 'self' 'sha256-${hash}'`);
+        }
+      }
+    }
+    fs.writeFileSync(configPath, `${JSON.stringify(config, null, 2)}\n`);
+  }
   console.log(`Prerendered ${rootHtml.length} chars of markup into index.html`);
 })();

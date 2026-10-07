@@ -195,9 +195,9 @@ export default function FinishSimulator() {
     <section className="fs-section section-pad" id="antes-depois" ref={sectionRef} aria-labelledby={headingId}>
       <div className="fs-layout">
         <div className="fs-copy">
-          <span className="eyebrow"><span className="tiny-line" /> ANTES E DEPOIS DA PINTURA</span>
+          <span className="eyebrow"><span className="tiny-line" /> SIMULAÇÃO DE CORES</span>
           <h2 id={headingId}>Mesma estrutura.<br /><span className="muted">Outra presença.</span></h2>
-          <p>Arraste a régua sobre a foto e compare. A mesma estrutura muda de personalidade só com a cor da pintura eletrostática.</p>
+          <p>Arraste a régua sobre a foto e compare as referências de cor. A simulação ajuda a imaginar diferentes acabamentos para a mesma estrutura.</p>
           <fieldset className="fs-finishes">
             <legend>Escolha a cor da estrutura</legend>
             <div className="fs-options">
@@ -210,7 +210,7 @@ export default function FinishSimulator() {
               ))}
             </div>
           </fieldset>
-          <p className="fs-note">Simulação ilustrativa aplicada sobre a foto real de uma estrutura. As cores finais seguem a cartela da pintura escolhida.</p>
+          <p className="fs-note">As cores exibidas são referências visuais. Disponibilidade, tipo de pintura e acabamento são confirmados no orçamento.</p>
         </div>
 
         <figure className="fs-figure">

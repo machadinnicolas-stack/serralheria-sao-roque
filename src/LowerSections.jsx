@@ -1,10 +1,13 @@
 import { useId, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpRight, Plus, Minus } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Plus, Minus, MessageCircle, Instagram, MapPin } from 'lucide-react';
 import './lower-sections.css';
 import { gsap, useGSAP, prefersReducedMotion } from './gsap.js';
 import { SheetEdge, TrussDrawing } from './Steel.jsx';
 import PergolaPlanner from './PergolaPlanner.jsx';
-import Testimonials from './Testimonials.jsx';
+
+const whatsappUrl = 'https://wa.me/5511952869701';
+const instagramUrl = 'https://www.instagram.com/saoroqueserralheria/';
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Rua Belém do Pará, 65, Recreio Estoril, Atibaia, SP')}`;
 
 const steps = [
   {
@@ -27,24 +30,24 @@ const steps = [
 
 const questions = [
   {
+    question: 'Qual a diferença entre a estrutura embutida e a tradicional?',
+    answer: 'Na estrutura metálica embutida, as telhas e parte da calha ficam ocultas. Na estrutura tradicional, as telhas e a calha ficam aparentes, com um acabamento moderno na calha. A escolha muda a aparência da cobertura e deve considerar o seu projeto.',
+  },
+  {
+    question: 'Há opção de cobertura com acabamento amadeirado?',
+    answer: 'Sim. A telha de duas faces, conhecida como telha sanduíche, tem opção de forro com acabamento amadeirado. São duas opções de tonalidade, a definir no orçamento.',
+  },
+  {
+    question: 'As opções de cobertura têm o mesmo valor?',
+    answer: 'Os valores variam conforme a opção de cobertura e as características do projeto. Medidas, materiais, acabamentos e condições de instalação entram na avaliação. Fale com a São Roque para comparar as opções e solicitar um orçamento para o seu espaço.',
+  },
+  {
     question: 'Por onde começo meu projeto?',
-    answer: 'Comece contando que estrutura você imagina e como pretende usar o espaço. Fotos, medidas aproximadas e referências ajudam a iniciar a conversa. Os detalhes e a viabilidade são definidos durante o planejamento.',
+    answer: 'Conte pelo WhatsApp o que você imagina e como pretende usar o espaço. Fotos, medidas aproximadas e referências ajudam a iniciar a conversa. Os detalhes, a viabilidade e o prazo precisam ser avaliados para cada projeto.',
   },
   {
-    question: 'Posso escolher os materiais e acabamentos?',
-    answer: 'Sim. A proposta é construir essas escolhas junto com você, considerando a aparência desejada, o uso de cada peça e as possibilidades do projeto. Perfis, cores de pintura e tipos de fixação fazem parte dessa conversa.',
-  },
-  {
-    question: 'Preciso ter um projeto de arquitetura pronto?',
-    answer: 'Não é necessário para iniciar a conversa. Você pode trazer um projeto existente ou apenas suas ideias e referências. A partir daí, são alinhadas as necessidades de desenho, medidas e detalhamento para seguir.',
-  },
-  {
-    question: 'Como são definidos o orçamento e o prazo?',
-    answer: 'Cada projeto tem suas particularidades. O orçamento e o cronograma são definidos após avaliar medidas, materiais, complexidade e condições de instalação, para que você conheça o escopo antes de decidir.',
-  },
-  {
-    question: 'A estrutura enferruja com o tempo?',
-    answer: 'Com tratamento anticorrosivo e pintura adequada ao ambiente, o aço fica protegido. A manutenção recomendada depende da exposição ao sol, à chuva e à maresia, e é orientada na entrega.',
+    question: 'Onde fica a Serralheria São Roque?',
+    answer: 'Estamos na Rua Belém do Pará, 65, no bairro Recreio Estoril, em Atibaia/SP. Para saber sobre atendimento na sua região, envie a localização do projeto pelo WhatsApp.',
   },
 ];
 
@@ -126,8 +129,6 @@ export default function LowerSections({ onContact, onUseMeasures }) {
         </div>
       </section>
 
-      <Testimonials />
-
       <section className="ls-contact" id="contato" aria-labelledby="ls-contact-heading">
         <SheetEdge fill="#f6f6f5" />
         <TrussDrawing className="ls-contact-grain" start="top 80%" end="bottom 85%" />
@@ -135,20 +136,37 @@ export default function LowerSections({ onContact, onUseMeasures }) {
           <p className="ls-eyebrow"><span /> UM ESPAÇO COM A SUA ESSÊNCIA</p>
           <h2 id="ls-contact-heading">Sua ideia merece<br />ganhar <em>forma.</em></h2>
           <p>Conte o que você imagina.<br />Vamos pensar juntos no que vem depois.</p>
-          <button className="ls-contact-button" type="button" onClick={onContact}>Vamos criar seu projeto <span><ArrowUpRight size={21} aria-hidden="true" /></span></button>
+          <button className="ls-contact-button" type="button" onClick={onContact}>Solicitar orçamento <span><ArrowUpRight size={21} aria-hidden="true" /></span></button>
+          <div className="ls-contact-details">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+              <MessageCircle size={20} strokeWidth={1.5} aria-hidden="true" />
+              <span><small>WHATSAPP</small><strong>(11) 95286-9701</strong></span>
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <a href={instagramUrl} target="_blank" rel="noreferrer">
+              <Instagram size={20} strokeWidth={1.5} aria-hidden="true" />
+              <span><small>INSTAGRAM</small><strong>@saoroqueserralheria</strong></span>
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <a href={mapsUrl} target="_blank" rel="noreferrer">
+              <MapPin size={20} strokeWidth={1.5} aria-hidden="true" />
+              <span><small>ATIBAIA / SP</small><strong>Rua Belém do Pará, 65</strong><span>Recreio Estoril · Ver no mapa</span></span>
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
         </div>
-        <div className="ls-contact-note ls-container"><span>DO AÇO, POSSIBILIDADES.</span><span>DO SEU JEITO, ÂMAGO.</span></div>
+        <div className="ls-contact-note ls-container"><span>DO AÇO, POSSIBILIDADES.</span><span>SERRALHERIA SÃO ROQUE.</span></div>
       </section>
 
       <footer className="ls-footer">
         <div className="ls-container">
           <div className="ls-footer-main">
-            <a className="ls-brand" href="#" aria-label="Âmago Serralheria, voltar ao início"><span>âmago<span className="ls-brand-dot">.</span></span><small>SERRALHERIA</small></a>
-            <p>Aço, precisão<br />e um novo jeito de habitar.</p>
+            <a className="ls-brand" href="#" aria-label="Serralheria São Roque, voltar ao início"><span>São Roque<span className="ls-brand-dot">.</span></span><small>SERRALHERIA</small></a>
+            <p>Estruturas metálicas<br />para o seu espaço.</p>
             <nav className="ls-footer-nav" aria-label="Navegação do rodapé"><a href="#sobre">Sobre</a><a href="#processo">Nosso processo</a><a href="#duvidas">Dúvidas frequentes</a><a href="#contato">Vamos conversar <ArrowUpRight size={14} aria-hidden="true" /></a></nav>
           </div>
-          <p className="ls-footer-area">Atendendo Atibaia, Bom Jesus dos Perdões, Piracaia, Jarinu e Mairiporã.</p>
-          <div className="ls-footer-bottom"><span>© {new Date().getFullYear()} Âmago Serralheria</span><a href="#">Voltar ao topo <ArrowUpRight size={14} aria-hidden="true" /></a></div>
+          <p className="ls-footer-area">Atibaia/SP · <a href={whatsappUrl} target="_blank" rel="noreferrer">Consulte o atendimento na sua região.</a></p>
+          <div className="ls-footer-bottom"><span>© {new Date().getFullYear()} Serralheria São Roque</span><a href="#">Voltar ao topo <ArrowUpRight size={14} aria-hidden="true" /></a></div>
         </div>
       </footer>
     </>

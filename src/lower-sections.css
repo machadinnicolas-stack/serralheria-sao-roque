@@ -304,6 +304,69 @@
   transform: rotate(45deg)
 }
 
+.ls-contact-details {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 22px 32px;
+  max-width: 1140px;
+  margin-top: 64px
+}
+
+.ls-contact-details>a {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+  padding-top: 22px;
+  border-top: 1px solid #edeceb35;
+  color: #edeceb;
+  text-decoration: none;
+  transition: color .2s
+}
+
+.ls-contact-details>a>svg {
+  flex-shrink: 0;
+  margin-top: 3px
+}
+
+.ls-contact-details>a>svg:last-child {
+  margin-left: auto
+}
+
+.ls-contact-details>a>span {
+  min-width: 0
+}
+
+.ls-contact-details small,.ls-contact-details strong,.ls-contact-details a>span>span {
+  display: block
+}
+
+.ls-contact-details small {
+  margin-bottom: 9px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  color: #babbb9
+}
+
+.ls-contact-details strong {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+  overflow-wrap: anywhere
+}
+
+.ls-contact-details a>span>span {
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #babbb9
+}
+
+.ls-contact-details>a:hover {
+  color: var(--accent)
+}
+
 .ls-contact-grain {
   position: absolute;
   z-index: -1;
@@ -363,9 +426,10 @@
 }
 
 .ls-brand>span {
-  font-size: 52px;
+  font-size: clamp(32px,3.2vw,45px);
   font-weight: 500;
-  letter-spacing: -3px
+  letter-spacing: -2px;
+  white-space: nowrap
 }
 
 .ls-brand-dot {
@@ -418,7 +482,12 @@
   margin: 0 0 24px;
   font-size: 12px;
   line-height: 1.6;
-  color: #8a8987
+  color: #6b6a69
+}
+
+.ls-footer-area a {
+  text-decoration: underline;
+  text-underline-offset: 3px
 }
 
 .ls-footer-bottom {
@@ -438,7 +507,7 @@
   outline-offset: 6px
 }
 
-.ls-contact-button:focus-visible {
+.ls-contact-button:focus-visible,.ls-contact-details>a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 6px
 }
@@ -484,6 +553,9 @@
   }
   .ls-contact-grain {
     right: -260px
+  }
+  .ls-contact-details {
+    grid-template-columns: repeat(2,minmax(0,1fr))
   }
   .ls-footer-main {
     gap: 30px
@@ -572,6 +644,11 @@
     right: -300px;
     opacity: .25
   }
+  .ls-contact-details {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-top: 44px
+  }
   .ls-contact-note {
     font-size: 10px;
     letter-spacing: 1.2px;
@@ -584,16 +661,16 @@
     text-align: right
   }
   .ls-footer-main {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 28px;
     padding-bottom: 37px
   }
   .ls-brand>span {
-    font-size: 45px
+    font-size: 42px
   }
   .ls-footer-main>p {
     font-size: 13px;
-    justify-self: end
+    margin-top: 0
   }
   .ls-footer-nav {
     grid-column: 1/-1;
@@ -638,7 +715,7 @@
 }
 
 @media(prefers-reduced-motion:reduce) {
-  .ls-step-top>svg,.ls-faq-icon,.ls-contact-button,.ls-contact-button>span,.ls-footer a {
+  .ls-step-top>svg,.ls-faq-icon,.ls-contact-button,.ls-contact-button>span,.ls-contact-details>a,.ls-footer a {
     transition: none
   }
   .ls-contact-button:hover,.ls-step:hover .ls-step-top>svg {

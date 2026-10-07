@@ -3,10 +3,10 @@ import './security-section.css';
 import { SheetEdge } from './Steel.jsx';
 
 const POINTS = [
-  { icon: ShieldCheck, title: 'Guarda-corpos', text: 'Sacadas, escadas e piscinas. Uma barreira de segurança que impede quedas sem esconder a vista.' },
-  { icon: DoorClosed, title: 'Portões', text: 'Controle de acesso e a primeira impressão da fachada, com resistência que acompanha o uso diário.' },
-  { icon: CloudRain, title: 'Coberturas & telhados', text: 'Estrutura dimensionada para vento e chuva, sem ceder com o tempo como a madeira cede.' },
-  { icon: Frame, title: 'Molduras & fachadas', text: 'Define a identidade do imóvel e, ao mesmo tempo, sustenta e protege o que está por trás dela.' },
+  { icon: ShieldCheck, title: 'Guarda-corpos', text: 'Soluções para sacadas e escadas, com medidas, desenho e fixação avaliados conforme o projeto.' },
+  { icon: DoorClosed, title: 'Portões', text: 'Modelos pensados para o acesso e a composição da fachada, com medidas e acabamento a definir.' },
+  { icon: CloudRain, title: 'Coberturas & telhados', text: 'Opções de estrutura embutida ou tradicional, com telhas e acabamento escolhidos para cada espaço.' },
+  { icon: Frame, title: 'Molduras & fachadas', text: 'Elementos metálicos que compõem a fachada, com desenho e detalhes definidos para o imóvel.' },
 ];
 
 export default function SecuritySection() {
@@ -14,15 +14,16 @@ export default function SecuritySection() {
     <section className="sec-section" id="sobre" aria-labelledby="sec-heading">
       <SheetEdge fill="#edeceb" />
       <div className="sec-layout">
-        <div className="sec-intro reveal">
-          <p className="eyebrow"><span className="tiny-line" /> SOBRE A ÂMAGO</p>
-          <h2 id="sec-heading">Mais que acabamento.<br />Uma estrutura em que<br /><span className="muted">você confia.</span></h2>
-          <p className="sec-description">Trabalhamos com quem precisa resolver mais do que estética: guarda-corpos, portões, coberturas e fachadas que seguram peso, resistem ao tempo e protegem quem vive ali. O aço bem projetado dura mais do que a madeira — e não abre mão do visual moderno que o seu espaço pede. Da conversa inicial ao desenho final, cada projeto é personalizado para o seu terreno e para a sua rotina.</p>
+        <div className="sec-top">
+          <div className="sec-intro reveal">
+            <p className="eyebrow"><span className="tiny-line" /> SOBRE A SÃO ROQUE</p>
+            <h2 id="sec-heading">Mais que acabamento.<br />Uma estrutura em que<br /><span className="muted">você confia.</span></h2>
+            <p className="sec-description">Em Atibaia, SP, a Serralheria São Roque trabalha com estruturas metálicas para diferentes espaços. Medidas, vãos e fixações são avaliados conforme o projeto, com proteção e acabamento definidos na proposta.</p>
+          </div>
+          <figure className="sec-brand reveal">
+            <img src="/images/sao-roque-logo.jpeg" alt="Serralheria São Roque — logo SR em prata e azul" width="1479" height="1064" loading="lazy" />
+          </figure>
         </div>
-
-        <blockquote className="sec-quote reveal">
-          <p>Nem tudo é voltado para acabamento, uma estrutura bem montada além de agregar um cenário futurista, mantém a proposta de proporcionar segurança e confiabilidade ao local.</p>
-        </blockquote>
 
         <div className="sec-grid">
           {POINTS.map(({ icon: Icon, title, text }) => (
