@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://serralheria-sao-roque.vercel.app/sitemap.xml
