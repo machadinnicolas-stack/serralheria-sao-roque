@@ -273,9 +273,9 @@
   display: inline-flex;
   align-items: center;
   gap: 28px;
-  background: #dcdad6;
-  border: 1px solid #dcdad6;
-  color: #212324;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #1e1f20;
   padding: 7px 7px 7px 25px;
   border-radius: 100px;
   font: 500 13px/1.4 'DM Sans',sans-serif;
@@ -291,12 +291,12 @@
   height: 39px;
   border-radius: 50%;
   background: #212324;
-  color: #dcdad6;
+  color: var(--accent);
   transition: transform .25s
 }
 
 .ls-contact-button:hover {
-  background: #f6f6f5;
+  background: var(--accent-light);
   transform: translateY(-2px)
 }
 

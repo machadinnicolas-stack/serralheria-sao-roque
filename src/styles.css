@@ -342,6 +342,19 @@ button svg,a svg {
   background: #ffffff10
 }
 
+.header-scrolled .header-cta {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1e1f20;
+  font-weight: 500;
+  transition: background .2s,transform .2s
+}
+
+.header-scrolled .header-cta:hover {
+  background: var(--accent-light);
+  transform: translateY(-1px)
+}
+
 .menu-button,.nav-mobile-contact {
   display: none
 }
