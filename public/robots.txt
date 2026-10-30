@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://serralheriasaoroque.com.br/sitemap.xml
